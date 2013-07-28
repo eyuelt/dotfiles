@@ -1,0 +1,15 @@
+[user]
+	name = AUTHORNAME
+	email = AUTHOREMAIL
+[credential]
+	helper = GIT_CREDENTIAL_HELPER
+[color]
+	ui = true
+        diff = auto
+        status = auto
+        branch = auto
+[core]
+	excludesfile = ~/.gitignore
+	editor = vim
+[alias]
+	l = log --oneline

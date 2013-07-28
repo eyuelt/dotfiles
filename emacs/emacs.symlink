@@ -1,0 +1,79 @@
+(custom-set-variables '(inhibit-startup-screen t))
+
+(setq latex-run-command "xelatex -shell-escape")
+
+;; Global key bindings
+(global-set-key (kbd "C-a") 'back-to-indentation)
+(global-set-key (kbd "C-b") 'undo)
+(global-set-key (kbd "C-f") 'delete-char)
+(global-set-key (kbd "C-d") 'backward-delete-char)
+(global-set-key (kbd "C-v") 'backward-kill-word)
+
+;; Movement keys
+(global-set-key (kbd "C-j") 'backward-char)
+(global-set-key (kbd "C-l") 'forward-char)
+(global-set-key (kbd "C-n") 'next-line)
+(global-set-key (kbd "C-o") 'backward-word);
+(global-set-key (kbd "C-p") 'forward-word)
+(global-set-key (kbd "C-q") 'scroll-down)
+(global-set-key (kbd "C-r") 'select-previous-window)
+(global-set-key (kbd "C-t") 'select-next-window)
+(global-set-key (kbd "C-u") 'previous-line)
+(global-set-key (kbd "C-z") 'scroll-up)
+
+;; alias C-; to C-x
+(global-set-key (kbd "C-;") ctl-x-map)
+
+(global-set-key (kbd "M-l") 'goto-line)
+(global-set-key (kbd "M-s") 'shell)
+(global-set-key (kbd "M-g") 'eshell)
+(global-set-key (kbd "M-n") 'universal-argument)
+(global-set-key (kbd "M-r") 'revert-buffer)
+
+(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "C-\\") 'recenter-top-bottom)
+(global-set-key (kbd "C-/") 'open-line)
+
+(global-set-key (kbd "<f5>") 'eshell)
+(global-set-key (kbd "<f2>") 'kmacro-start-macro)
+(global-set-key (kbd "<f3>") 'kmacro-end-or-call-macro)
+
+;; org mode tries to override our C-j keybinding
+(add-hook 'org-mode-hook (lambda () (local-set-key "\C-j" 'backward-char)))
+
+;; Latex mode overwrites a couple of things
+(defun my-LaTeX-startup ()
+  (local-set-key (kbd "C-j") 'backward-char)
+  (local-set-key (kbd "C-;") ctl-x-map)
+)
+
+;;AUCTex uses LaTeX-mode-hook
+(add-hook 'latex-mode-hook 'my-LaTeX-startup)
+
+
+;; Next and previous windows
+(defun select-next-window ()
+  (interactive)
+  (select-window (next-window)))
+
+(defun select-previous-window ()
+  (interactive)
+  (select-window (previous-window)))
+
+;; get rid of menu bars
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(put 'scroll-left 'disabled nil)
+
+;; 4 character tabs
+(setq default-tab-width 4)
+
+;; python uses spaces, not tabs
+(add-hook 'python-mode-hook
+          (lambda ()
+            (setq-default indent-tabs-mode nil)))
+
+;; Prevent annoying \"Active processes exist\" query when you quit Emacs.
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  (let ((process-list ())) ad-do-it))
