@@ -49,12 +49,12 @@ There are a few special files in the hierarchy.
 I initially tried forking [Zach Holman](http://github.com/holman)'s 
 [dotfiles](http://github.com/holman/dotfiles) project and using that as my own,
 but after spending some time attempting to remove what I didn't need and adapt it
-for my uses, I figured that it would be easier to start my own dotfiles project,
-which I could then modify by picking and choosing individual things from others'
-dotfiles projects. This way, I would actually know everything that's going on in my
-project and would be sure to only add topics that I need and functions or aliases
-that I actually use frequently. I liked his project a lot though, so I mimicked the
-structure of his project and borrowed heavily from it (including much of the text
-of this readme). Also, you should check out his
+for my uses, I figured that it would be easier to start my own dotfiles project
+then pick and choose the parts I liked from his project - and from others'
+projects. This way, I would actually know everything that's going on in my project
+and would be sure to only add topics that I need and functions or aliases that I
+actually use frequently. I liked his project a lot though, so I borrowed heavily
+from his project (including much of the text of this readme) and mimicked its
+topical structure. Also, you should check out his
 [awesome post](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/)
 on dotfiles projects.
