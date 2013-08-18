@@ -7,15 +7,19 @@ set -e
 echo ''
 
 info () {
-  printf "  [ \033[00;34m..\033[0m ] $1"
+  printf "\r  [ \033[00;34m...\033[0m ] $1\n"
 }
 
 user () {
-  printf "\r  [ \033[0;33m?\033[0m ] $1 "
+  printf "\r  [  \033[0;33m?\033[0m  ] $1 "
 }
 
 success () {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+  printf "\r\033[2K  [ \033[00;32mOK \033[0m ] $1\n"
+}
+
+error () {
+  printf "\r\033[2K  [\033[0;31mERROR\033[0m] $1\n"
 }
 
 fail () {
@@ -25,24 +29,33 @@ fail () {
 }
 
 setup_gitconfig () {
-  if ! [ -f $DOTFILES/git/gitconfig.symlink]
+  OUTPUT_FILE=$DOTFILES/git/gitconfig.symlink
+  TEMPLATE_FILE=$OUTPUT_FILE.template
+
+  if [ ! -f $OUTPUT_FILE ]
   then
-    info 'setup gitconfig'
 
-    git_credential='cache'
-    if [ "$(uname -s)" == "Darwin" ]
+    info "Setting up gitconfig..."
+    if [ -f $TEMPLATE_FILE ]
     then
-      git_credential='osxkeychain'
+      git_credential='cache'
+      if [ "$(uname -s)" == "Darwin" ]
+      then
+        git_credential='osxkeychain'
+      fi
+
+      user ' - What is your github author name?'
+      read -e git_authorname
+      user ' - What is your github author email?'
+      read -e git_authoremail
+
+      sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" $TEMPLATE_FILE > $OUTPUT_FILE
+
+      success 'gitconfig created'
+    else
+      error "Could not create gitconfig. Template file, $TEMPLATE_FILE, does not exist"
     fi
-
-    user ' - What is your github author name?'
-    read -e git_authorname
-    user ' - What is your github author email?'
-    read -e git_authoremail
-
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" $DOTFILES/git/gitconfig.symlink.example > $DOTFILES/git/gitconfig.symlink
-
-    success 'gitconfig'
+    echo ''
   fi
 }
 
@@ -52,7 +65,7 @@ link_files () {
 }
 
 install_dotfiles () {
-  info 'installing dotfiles'
+  info 'Installing dotfiles...'
 
   overwrite_all=false
   backup_all=false
@@ -60,7 +73,7 @@ install_dotfiles () {
 
   for source in `find $DOTFILES -maxdepth 2 -name \*.symlink`
   do
-    dest="$HOME/.`basename \"${source%.*}\"`"
+    dest="$HOME/.`basename \"${source/%.symlink/}\"`"   #this uses bash search and replace
 
     if [ -f $dest ] || [ -d $dest ]
     then
@@ -71,7 +84,7 @@ install_dotfiles () {
 
       if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
       then
-        user "File already exists: `basename $source`, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        user "File `basename $dest` already exists. What do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
 
         case "$action" in
