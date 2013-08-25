@@ -1,4 +1,9 @@
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+" disallow arrow keys in regular mode
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+
+" alias 'fj' to ESC in all modes 
+noremap fj <ESC> 
+noremap! fj <ESC>
