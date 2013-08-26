@@ -7,3 +7,10 @@ noremap <right> <nop>
 " alias 'fj' to ESC in all modes 
 noremap fj <ESC> 
 noremap! fj <ESC>
+
+" put spaces instead of tabs
+:set expandtab
+:set tabstop=2
+
+" set indent width
+:set shiftwidth=2
