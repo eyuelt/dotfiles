@@ -5,9 +5,9 @@
 	helper = GIT_CREDENTIAL_HELPER
 [color]
 	ui = true
-        diff = auto
-        status = auto
-        branch = auto
+  diff = auto
+  status = auto
+  branch = auto
 [core]
 	excludesfile = ~/.gitignore
 	editor = vim
