@@ -27,7 +27,7 @@ git_repo_info() {
 }
 
 
-export PROMPTLINE1='%B%n%b in %U%c%u$(git_repo_info)'
+export PROMPTLINE1='%B%n%b in %U%~%u$(git_repo_info)'
 export PROMPTLINE2='> '
 
 precmd() {
