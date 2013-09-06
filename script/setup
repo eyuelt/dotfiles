@@ -6,29 +6,29 @@ set -e
 
 echo ''
 
-info () {
+info() {
   printf "\r  [ \033[00;34m...\033[0m ] $1\n"
 }
 
-user () {
+user() {
   printf "\r  [  \033[0;33m?\033[0m  ] $1 "
 }
 
-success () {
+success() {
   printf "\r\033[2K  [ \033[00;32mOK \033[0m ] $1\n"
 }
 
-error () {
+error() {
   printf "\r\033[2K  [\033[0;31mERROR\033[0m] $1\n"
 }
 
-fail () {
+fail() {
   printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
   echo ''
   exit
 }
 
-setup_gitconfig () {
+setup_gitconfig() {
   OUTPUT_FILE=$DOTFILES/git/gitconfig.symlink
   TEMPLATE_FILE=$OUTPUT_FILE.template
 
@@ -59,12 +59,12 @@ setup_gitconfig () {
   fi
 }
 
-link_files () {
+link_files() {
   ln -s $1 $2
   success "linked $1 to $2"
 }
 
-install_dotfiles () {
+install_dotfiles() {
   info 'Installing dotfiles...'
 
   overwrite_all=false
@@ -129,10 +129,48 @@ install_dotfiles () {
     fi
 
   done
+
+  echo ''
 }
+
+setup_solarized_for_mac() {
+  if [ "$(uname -s)" != "Darwin" ]
+  then
+    return
+  fi
+
+  info "Setting up Terminal theme"
+  user "This will quit Terminal and restart it in 30 seconds. Is this okay?"
+  read -e response
+  first=$(echo $response | cut -c 1)
+
+  while [ $first != "y" ] && [ $first != "Y" ] && [ $first != "n" ] && [ $first != "N" ]
+  do
+    user "Please answer yes or no:"
+    read -e response
+    first=$(echo $response | cut -c 1)
+  done
+
+  if [ $first == "y" ] || [ $first == "Y" ]
+  then
+    info "Alrighty then."
+    open "$DOTFILES/osx/Solarized Dark.terminal" &
+    osascript $DOTFILES/osx/set_default_terminal_theme.scpt &
+    disown %%
+    exit 0
+  else
+    error "Did not set default Terminal theme."
+    echo ''
+  fi
+}
+
 
 setup_gitconfig
 install_dotfiles
 
-echo ''
+if [ "$(uname -s)" == "Darwin" ]
+then
+  setup_solarized_for_mac
+fi
+
 echo '  Setup complete!'
