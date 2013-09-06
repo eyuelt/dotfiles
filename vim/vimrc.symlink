@@ -14,3 +14,13 @@ noremap! fj <ESC>
 
 " set indent width
 :set shiftwidth=2
+
+" use solarized theme on mac
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    syntax enable
+    set background=dark
+    colorscheme solarized
+  endif
+endif
