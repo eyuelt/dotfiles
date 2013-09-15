@@ -18,8 +18,8 @@ directory() {
 }
 
 git_repo_info() {
-  git rev-parse --git-dir 1>/dev/null 2>/dev/null
-  if [[ $? == 0 ]]
+  inworkingtree="$(git rev-parse --is-inside-work-tree 2>/dev/null)"
+  if [[ $? == 0 && $inworkingtree == 'true' ]]
   then
     echo -n " on "
     echo -n "$C2$(git symbolic-ref --short HEAD 2>/dev/null)" || echo -n "(detached HEAD)$CRESET"
