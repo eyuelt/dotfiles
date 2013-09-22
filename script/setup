@@ -2,9 +2,27 @@
 
 DOTFILES=$HOME/.dotfiles
 
-set -e
 
-echo ''
+main() {
+  set -e
+  echo "This script requires sudo access"
+  sudo -v
+  echo ''
+
+  set_default_shell
+  setup_gitconfig
+  install_dotfiles
+
+  if [ "$(uname -s)" == "Darwin" ]
+  then
+    #this needs to be done last
+    setup_solarized_for_mac
+  fi
+
+  sudo -k
+  echo '  Setup complete!'
+}
+
 
 info() {
   printf "\r  [ \033[00;34m...\033[0m ] $1\n"
@@ -26,6 +44,43 @@ fail() {
   printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
   echo ''
   exit
+}
+
+set_default_shell() {
+  info "Setting zsh as default shell..."
+
+  if [ ! -f /bin/zsh ]
+  then
+    user "You don't have zsh. Download and install zsh?"
+    read -e response
+    first=$(echo $response | cut -c 1)
+
+    while [ $first != "y" ] && [ $first != "Y" ] && [ $first != "n" ] && [ $first != "N" ]
+    do
+      user "Please answer yes or no:"
+      read -e response
+      first=$(echo $response | cut -c 1)
+    done
+
+    if [ $first == "y" ] || [ $first == "Y" ]
+    then
+      if [ "$(uname -s)" == "Linux" ]
+      then
+        sudo apt-get install zsh 1>/dev/null 2>/dev/null
+        success "Installed zsh"
+      fi
+    fi
+  fi
+
+  if [ -f /bin/zsh ]
+  then
+    sudo chsh -s /bin/zsh `whoami` 1>/dev/null 2>/dev/null
+    success "Set zsh as default shell"
+  else
+    error "Did not set zsh as default shell"
+  fi
+
+  echo ''
 }
 
 setup_gitconfig() {
@@ -168,12 +223,4 @@ setup_solarized_for_mac() {
 }
 
 
-setup_gitconfig
-install_dotfiles
-
-if [ "$(uname -s)" == "Darwin" ]
-then
-  setup_solarized_for_mac
-fi
-
-echo '  Setup complete!'
+main
