@@ -1,5 +1,10 @@
-export LSCOLORS="exfxcxdxbxegedabagacad"
-export CLICOLOR=true
+if [ "$(uname -s)" = "Darwin" ]
+then
+  export LSCOLORS="exfxcxdxbxegedabagacad"
+  export CLICOLOR=true
+else if [ "$(uname -s)" = "Linux" ]
+  export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
+fi
 
 #fpath=($DOTFILES/functions $fpath)
 #autoload -U $DOTFILES/functions/*(:t)
