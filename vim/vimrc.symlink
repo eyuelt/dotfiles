@@ -28,3 +28,6 @@ endif
 " show line numbers and make them grey
 set number
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
+" highlight current line (can cause vim to respond slowly on large files)
+set cursorline
