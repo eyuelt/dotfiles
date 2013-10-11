@@ -9,11 +9,11 @@ noremap fj <ESC>
 noremap! fj <ESC>
 
 " put spaces instead of tabs
-:set expandtab
-:set tabstop=2
+set expandtab
+set tabstop=2
 
 " set indent width
-:set shiftwidth=2
+set shiftwidth=2
 
 " use solarized theme on mac
 if has("unix")
