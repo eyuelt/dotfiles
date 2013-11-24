@@ -13,3 +13,4 @@
   editor = vim
 [alias]
   l = log --oneline
+	st = status -s
