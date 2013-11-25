@@ -14,3 +14,5 @@
 [alias]
   l = log --oneline
 	st = status -s
+[push]
+	default = simple
