@@ -1,3 +1,6 @@
+" make sure Vi-compatibility mode is off so we can use Vim features
+set nocompatible
+
 " disallow arrow keys in regular mode
 noremap <up> <nop>
 noremap <down> <nop>
@@ -31,3 +34,6 @@ highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE gui
 
 " highlight current line (can cause vim to respond slowly on large files)
 set cursorline
+
+" source Vundle config file
+source $DOTFILES/vim/vundle.vim
