@@ -17,6 +17,9 @@ Bundle 'gmarik/vundle'
 
 " My bundles
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'wavded/vim-stylus'
 
 
 " End bundle list -------------------------------
