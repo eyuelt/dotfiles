@@ -1,4 +1,8 @@
 " vundle.vim
+" ----------
+" Config file for Vundle bundles. This file also sources all
+" Vundle-installed plugins. So this file should be sourced
+" in the vimrc before attempting to use any of those plugins.
 " note: comments after Bundle commands are not allowed.
 
 filetype off                  " required!
