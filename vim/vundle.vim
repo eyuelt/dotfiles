@@ -5,11 +5,17 @@ filetype off                  " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+" Start bundle list -----------------------------
+
+
 " let Vundle manage Vundle (required)
 Bundle 'gmarik/vundle'
 
 " My bundles
-" Bundle foo
+Bundle 'altercation/vim-colors-solarized'
+
+
+" End bundle list -------------------------------
 
 filetype plugin indent on     " required!
 
