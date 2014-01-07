@@ -194,9 +194,6 @@ setup_solarized_for_mac() {
     return
   fi
 
-  mkdir -p ~/.vim/colors/
-  cp $DOTFILES/vim/solarized.vim ~/.vim/colors
-
   info "Setting up Terminal theme"
   user "This will quit Terminal and restart it in 30 seconds. Is this okay?"
   read -e response
