@@ -20,6 +20,8 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'wavded/vim-stylus'
+Bundle 'walm/jshint.vim'
+Bundle 'eyuelt/vim-whitespace'
 
 
 " End bundle list -------------------------------
