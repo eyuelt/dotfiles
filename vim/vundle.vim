@@ -22,6 +22,7 @@ Bundle 'digitaltoad/vim-jade'
 Bundle 'wavded/vim-stylus'
 Bundle 'walm/jshint.vim'
 Bundle 'eyuelt/vim-whitespace'
+Bundle 'elzr/vim-json'
 
 
 " End bundle list -------------------------------
