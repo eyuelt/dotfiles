@@ -22,7 +22,7 @@ git_repo_info() {
   if [[ $? == 0 && $inworkingtree == 'true' ]]
   then
     echo -n " on "
-    echo -n "$C2$(git symbolic-ref --short HEAD 2>/dev/null || git symbolic-ref HEAD 2>/dev/null | cut -d / -f3 || echo -n '(detached HEAD)')$CRESET"
+    echo -n "$C2$(git symbolic-ref --short HEAD 2>/dev/null || (git symbolic-ref HEAD 2>/dev/null | cut -d / -f3 && [[ ${pipestatus[1]} -eq 0 ]]) || echo -n '(detached HEAD)')$CRESET"
 
     echo -n "$C5"
     changes=$(git status --short)
