@@ -11,7 +11,7 @@ then
   source ~/.localrc
 fi
 
-# get all zsh files in our dotfiles directory 
+# get all zsh files in our dotfiles directory
 typeset -U config_files
 config_files=($DOTFILES/**/*.zsh)
 

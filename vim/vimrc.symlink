@@ -10,8 +10,8 @@ noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 
-" alias 'fj' to ESC in all modes 
-noremap fj <ESC> 
+" alias 'fj' to ESC in all modes
+noremap fj <ESC>
 noremap! fj <ESC>
 
 " alias '\l' to toggle line numbers

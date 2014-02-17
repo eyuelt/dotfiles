@@ -13,6 +13,6 @@
   editor = vim
 [alias]
   l = log --oneline
-	st = status -s
+  st = status -s
 [push]
-	default = simple
+  default = simple

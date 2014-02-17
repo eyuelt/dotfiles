@@ -46,7 +46,7 @@ There are a few special files in the hierarchy.
 
 ## thanks
 
-I initially tried forking [Zach Holman](http://github.com/holman)'s 
+I initially tried forking [Zach Holman](http://github.com/holman)'s
 [dotfiles](http://github.com/holman/dotfiles) project and using that as my own,
 but after spending some time attempting to remove what I didn't need and adapt it
 for my uses, I figured that it would be easier to start my own dotfiles project
