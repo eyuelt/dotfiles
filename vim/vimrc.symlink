@@ -2,7 +2,9 @@
 set nocompatible
 
 " source Vundle config file (should be at beginning of vimrc)
-source $DOTFILES/vim/vundle.vim
+if isdirectory(expand("~/.vim/bundle/vundle"))
+  source $DOTFILES/vim/vundle.vim
+endif
 
 " disallow arrow keys in regular mode
 noremap <up> <nop>
