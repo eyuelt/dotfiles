@@ -1,40 +1,36 @@
 " vundle.vim
 " ----------
-" Config file for Vundle bundles. This file also sources all
+" Config file for Vundle plugins. This file also sources all
 " Vundle-installed plugins. So this file should be sourced
 " in the vimrc before attempting to use any of those plugins.
-" note: comments after Bundle commands are not allowed.
 
-filetype off                  " required!
+" [required]
+filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" Start bundle list -----------------------------
+" Start plugin list -----------------------------
 
 
-" let Vundle manage Vundle (required)
-Bundle 'gmarik/vundle'
-
-" My bundles
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'wavded/vim-stylus'
-Bundle 'walm/jshint.vim'
-Bundle 'eyuelt/vim-better-whitespace'
-Bundle 'elzr/vim-json'
+Plugin 'gmarik/vundle'                        " Vundle [required]
+Plugin 'altercation/vim-colors-solarized'     " solarized colorsheme
+Plugin 'jelera/vim-javascript-syntax'         " javascript syntax highlighting
+Plugin 'digitaltoad/vim-jade'                 " jade syntax highlighting
+Plugin 'wavded/vim-stylus'                    " stylus syntax highlighting
+Plugin 'walm/jshint.vim'                      " run JSHint within vim
+Plugin 'eyuelt/vim-better-whitespace'         " clean whitespace
+Plugin 'elzr/vim-json'                        " json syntax highlighting
 
 
-" End bundle list -------------------------------
+" End plugin list -------------------------------
 
-filetype plugin indent on     " required!
-
+filetype plugin indent on     " [required]
 
 
 " Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install (update) bundles
-" :BundleSearch(!) foo - search (or refresh cache first) for foo
-" :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles
+" :PluginList          - list configured plugins
+" :PluginInstall(!)    - install (update) plugins
+" :PluginSearch(!) foo - search (or refresh cache first) for foo
+" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
 "
 " see :h vundle for more details or the Vundle wiki for FAQ
