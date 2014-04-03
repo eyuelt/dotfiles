@@ -31,6 +31,7 @@ setopt INC_APPEND_HISTORY    # adds history incrementally
 setopt SHARE_HISTORY         # share history across sessions
 setopt HIST_IGNORE_ALL_DUPS  # don't record duplicates in history
 setopt HIST_REDUCE_BLANKS    # remove extra blanks
+setopt HIST_IGNORE_SPACE     # don't save lines that start with a space in the history
 
 # don't expand aliases _before_ completion has finished
 #   like: git comm-[tab]
