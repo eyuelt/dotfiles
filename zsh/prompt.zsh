@@ -12,6 +12,13 @@ username() {
   echo -n "$C3%n$CRESET"
 }
 
+computer_name() {
+  if [[ -n $NICKNAME ]]
+  then
+    echo -n "@$C1$NICKNAME$CRESET"
+  fi
+}
+
 directory() {
   echo -n " in "
   echo -n "$C5%U%~%u$CRESET"
@@ -48,7 +55,7 @@ git_repo_info() {
 }
 
 
-export PROMPTLINE1='$(username)$(directory)$(git_repo_info)'
+export PROMPTLINE1='$(username)$(computer_name)$(directory)$(git_repo_info)'
 export PROMPTLINE2='> '
 
 precmd() {
