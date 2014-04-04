@@ -64,11 +64,12 @@ set_default_shell() {
 
     if [ $first == "y" ] || [ $first == "Y" ]
     then
+      info "Installing zsh..."
       if [ "$(uname -s)" == "Linux" ]
       then
         sudo apt-get install zsh 1>/dev/null 2>/dev/null
-        success "Installed zsh"
       fi
+      success "zsh installed"
     fi
   fi
 
