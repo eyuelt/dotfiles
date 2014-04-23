@@ -97,7 +97,7 @@ install_vundle() {
     if [[ $? == 0 ]]
     then
       info "Installing Vundle..."
-      mkdir -p ~/.vim/bundle
+      sudo su $USER -c "mkdir -p ~/.vim/bundle"
       git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle 1>/dev/null 2>/dev/null
       success "Vundle installed"
     fi
