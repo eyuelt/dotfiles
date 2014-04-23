@@ -100,7 +100,18 @@ install_vundle() {
       sudo su $USER -c "mkdir -p ~/.vim/bundle"
       git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle 1>/dev/null 2>/dev/null
       success "Vundle installed"
+      install_vundle_plugins
     fi
+  fi
+}
+
+install_vundle_plugins() {
+  prompt_user_to_install "your Vundle plugins"
+  if [[ $? == 0 ]]
+  then
+    info "Installing your Vundle plugins..."
+    $DOTFILES/bin/vundleinstall
+    success "Vundle plugins installed"
   fi
 }
 
