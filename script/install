@@ -16,6 +16,7 @@ main() {
     install_git
     install_vundle
   fi
+  echo ''
 }
 
 
@@ -97,7 +98,7 @@ install_vundle() {
     then
       info "Installing Vundle..."
       mkdir -p ~/.vim/bundle
-      git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+      git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle 1>/dev/null 2>/dev/null
       success "Vundle installed"
     fi
   fi
