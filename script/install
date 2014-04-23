@@ -1,0 +1,130 @@
+#!/bin/bash
+
+
+main() {
+  sudo -v
+
+  should_prompt_user=false
+
+  if [ "$(uname -s)" == "Darwin" ]
+  then
+    install_homebrew
+    install_vundle
+  elif [ "$(uname -s)" == "Linux" ]
+  then
+    install_zsh
+    install_git
+    install_vundle
+  fi
+}
+
+
+info() {
+  printf "\r  [ \033[00;34m...\033[0m ] $1\n"
+}
+
+user() {
+  printf "\r  [  \033[0;33m?\033[0m  ] $1 "
+}
+
+success() {
+  printf "\r\033[2K  [ \033[00;32mOK \033[0m ] $1\n"
+}
+
+error() {
+  printf "\r\033[2K  [\033[0;31mERROR\033[0m] $1\n"
+}
+
+install_homebrew() {
+  if [[ ! -a $(which brew) ]]
+  then
+    prompt_user_to_install "homebrew"
+    if [[ $? == 0 ]]
+    then
+      info "Installing homebrew..."
+      if [ "$(uname -s)" == "Darwin" ]
+      then
+        ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+        success "homebrew installed"
+      else
+        error "homebrew not installed"
+      fi
+    fi
+  fi
+}
+
+install_zsh() {
+  if [[ ! -a $(which zsh) ]]
+  then
+    prompt_user_to_install "zsh"
+    if [[ $? == 0 ]]
+    then
+      info "Installing zsh..."
+      if [ "$(uname -s)" == "Linux" ]
+      then
+        sudo apt-get install zsh --yes 1>/dev/null 2>/dev/null
+        success "zsh installed"
+      else
+        error "zsh not installed"
+      fi
+    fi
+  fi
+}
+
+install_git() {
+  if [[ ! -a $(which git) ]]
+  then
+    prompt_user_to_install "git"
+    if [[ $? == 0 ]]
+    then
+      info "Installing git..."
+      if [ "$(uname -s)" == "Linux" ]
+      then
+        sudo apt-get install git --yes 1>/dev/null 2>/dev/null
+        success "git installed"
+      else
+        error "git not installed"
+      fi
+    fi
+  fi
+}
+
+install_vundle() {
+  if [[ ! -a ~/.vim/bundle/vundle ]]
+  then
+    prompt_user_to_install "Vundle"
+    if [[ $? == 0 ]]
+    then
+      info "Installing Vundle..."
+      mkdir -p ~/.vim/bundle
+      git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+      success "Vundle installed"
+    fi
+  fi
+}
+
+prompt_user_to_install() {
+  if [[ $should_prompt_user == true ]]
+  then
+    user "You don't have $1. Download and install $1?"
+    read -e response
+    first=$(echo $response | cut -c 1)
+  else
+    first="Y"
+  fi
+
+  while [ $first != "y" ] && [ $first != "Y" ] && [ $first != "n" ] && [ $first != "N" ]
+  do
+    user "Please answer yes or no:"
+    read -e response
+    first=$(echo $response | cut -c 1)
+  done
+
+  if [ $first == "n" ] || [ $first == "N" ]
+  then
+    return 1
+  fi
+  return 0
+}
+
+main

@@ -9,6 +9,7 @@ main() {
   sudo -v
   echo ''
 
+  sudo $DOTFILES/script/install
   set_default_shell
   setup_gitconfig
   install_dotfiles
