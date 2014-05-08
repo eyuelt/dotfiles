@@ -52,15 +52,13 @@ set_default_shell() {
 
   if [ ! -f /bin/zsh ]
   then
-    user "You don't have zsh. Download and install zsh?"
-    read -e response
-    first=$(echo $response | cut -c 1)
+    user "You don't have zsh. Download and install zsh? [y/n]"
+    read -n 1 first
 
     while [ $first != "y" ] && [ $first != "Y" ] && [ $first != "n" ] && [ $first != "N" ]
     do
-      user "Please answer yes or no:"
-      read -e response
-      first=$(echo $response | cut -c 1)
+      user "Please answer [y]es or [n]o:"
+      read -n 1 first
     done
 
     if [ $first == "y" ] || [ $first == "Y" ]
@@ -197,15 +195,13 @@ setup_solarized_for_mac() {
   fi
 
   info "Setting up Terminal theme"
-  user "This will quit Terminal and restart it in 30 seconds. Is this okay?"
-  read -e response
-  first=$(echo $response | cut -c 1)
+  user "This will quit Terminal and restart it in 30 seconds. Is this okay? [y/n]"
+  read -n 1 first
 
   while [ $first != "y" ] && [ $first != "Y" ] && [ $first != "n" ] && [ $first != "N" ]
   do
-    user "Please answer yes or no:"
-    read -e response
-    first=$(echo $response | cut -c 1)
+    user "Please answer [y]es or [n]o:"
+    read -n 1 first
   done
 
   if [ $first == "y" ] || [ $first == "Y" ]
