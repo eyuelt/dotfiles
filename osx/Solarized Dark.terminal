@@ -184,6 +184,8 @@
 	<true/>
 	<key>FontWidthSpacing</key>
 	<real>1.004032258064516</real>
+	<key>Linewrap</key>
+	<true/>
 	<key>ProfileCurrentVersion</key>
 	<real>2.02</real>
 	<key>RunCommandAsShell</key>
@@ -278,7 +280,7 @@
 	ZmZmg1MTpj6DeHnQPoPQg+A+AYY=
 	</data>
 	<key>columnCount</key>
-	<integer>100</integer>
+	<integer>140</integer>
 	<key>cyanColour</key>
 	<data>
 	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
