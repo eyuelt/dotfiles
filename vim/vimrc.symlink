@@ -48,3 +48,6 @@ highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE gui
 
 " highlight current line (can cause vim to respond slowly on large files)
 set cursorline
+
+" show line and column number in bottom right of screen
+set ruler
