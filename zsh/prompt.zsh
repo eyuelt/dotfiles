@@ -55,8 +55,8 @@ git_repo_info() {
 }
 
 
-export PROMPTLINE1='$(username)$(computer_name)$(directory)$(git_repo_info)'
-export PROMPTLINE2='> '
+export PROMPTLINE1='┌─ $(username)$(computer_name)$(directory)$(git_repo_info)'
+export PROMPTLINE2='└> '
 
 precmd() {
   # The '\e[K' sequence erases to the end of the line. This keeps precmd
