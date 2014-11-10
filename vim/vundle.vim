@@ -15,6 +15,7 @@ call vundle#rc()
 Plugin 'gmarik/vundle'                        " Vundle [required]
 Plugin 'altercation/vim-colors-solarized'     " solarized colorsheme
 Plugin 'jelera/vim-javascript-syntax'         " javascript syntax highlighting
+Plugin 'pangloss/vim-javascript'              " javascript indentation
 Plugin 'digitaltoad/vim-jade'                 " jade syntax highlighting
 Plugin 'wavded/vim-stylus'                    " stylus syntax highlighting
 Plugin 'walm/jshint.vim'                      " run JSHint within vim
