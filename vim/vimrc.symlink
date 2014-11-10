@@ -27,10 +27,17 @@ nnoremap <C-l> <C-w>l
 
 " put spaces instead of tabs
 set expandtab
-set tabstop=2
+
+function TabWidth(width)
+    let &tabstop=a:width
+    let &softtabstop=a:width
+    let &shiftwidth=a:width
+endfunction
+command! -nargs=1 TabWidth call TabWidth(<f-args>)
 
 " set indent width
-set shiftwidth=2
+let defaultwidth=4
+call TabWidth(defaultwidth)
 
 " use solarized theme on mac
 if has("unix")
