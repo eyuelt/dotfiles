@@ -1,0 +1,20 @@
+# shortcut to this dotfiles path is $DOTFILES
+export DOTFILES=$HOME/.dotfiles
+
+# my main code project directory
+export PROJECTS=~/code
+
+export PATH=$DOTFILES/bin:$PATH
+
+PYTHONPATH=$PYTHONPATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages
+if [[ -a $(which brew) ]]
+then
+  PYTHONPATH=$PYTHONPATH:$(brew --prefix)/lib/python2.7/site-packages
+fi
+export PYTHONPATH
+
+# these vars should be included when using sudo
+get_global_env_vars() {
+  echo "DOTFILES=$DOTFILES "
+  echo "PROJECTS=$PROJECTS "
+}

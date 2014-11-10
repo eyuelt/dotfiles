@@ -11,3 +11,5 @@ then
 else if [ "$(uname -s)" = "Linux" ]
   alias ls='ls --color'
 fi
+
+alias sudo='sudo env $(get_global_env_vars)'
