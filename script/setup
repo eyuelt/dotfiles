@@ -5,12 +5,17 @@ export DOTFILES=$HOME/.dotfiles
 
 main() {
   set -e
-  echo "This script requires sudo access"
-  sudo -v
-  echo ''
 
-  $DOTFILES/script/install
-  set_default_shell
+  if [ -z $nosudo ]
+  then
+    echo "This script requires sudo access"
+    sudo -v
+    echo ''
+
+    $DOTFILES/script/install
+    set_default_shell
+  fi
+
   setup_gitconfig
   install_dotfiles
 
@@ -218,4 +223,16 @@ setup_solarized_for_mac() {
 }
 
 
+set_args() {
+  while [ "$1" != "" ]; do
+    case $1 in
+      "-n" | "--nosudo")
+        nosudo=true
+        ;;
+    esac
+    shift
+  done
+}
+
+set_args $*
 main
