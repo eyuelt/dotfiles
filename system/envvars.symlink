@@ -1,5 +1,5 @@
-# shortcut to this dotfiles path is $DOTFILES
-export DOTFILES=$HOME/.dotfiles
+# the directory where my dotfiles live
+export DOTFILES=~/.dotfiles
 
 # my main code project directory
 export PROJECTS=~/code
