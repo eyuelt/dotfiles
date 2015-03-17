@@ -19,6 +19,9 @@ noremap! fj <ESC>
 " alias '\l' to toggle line numbers
 noremap \l :set number!<CR>
 
+" alias '\p' to toggle paste mode
+noremap \p :set paste!<CR>
+
 " alias better commands for split window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
