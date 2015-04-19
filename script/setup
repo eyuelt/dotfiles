@@ -131,7 +131,7 @@ install_dotfiles() {
   backup_all=false
   skip_all=false
 
-  for source in `find $DOTFILES -maxdepth 2 -name \*.symlink`
+  for source in `find -L $DOTFILES -maxdepth 2 -name \*.symlink`
   do
     dest="$HOME/.`basename \"${source/%.symlink/}\"`"   #this uses bash search and replace
 
