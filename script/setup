@@ -8,9 +8,7 @@ main() {
 
   if [ -z $nosudo ]
   then
-    echo "This script requires sudo access"
-    sudo -v
-    echo ''
+    sudo -v -p "Enter sudo password (or run with --nosudo):"
 
     $DOTFILES/script/install
     set_default_shell
