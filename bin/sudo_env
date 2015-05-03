@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#if there is at least one argument and it doesn't start with a dash
+if [[ ! -z $1 ]] && [[ ! $1 =~ ^- ]]
+then
+  #inject global env vars
+  sudo env $(global_env_vars) $*
+else
+  #call sudo normally
+  sudo $*
+fi
