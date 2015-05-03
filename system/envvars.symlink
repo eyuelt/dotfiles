@@ -6,6 +6,9 @@ export DOTFILES=~/.dotfiles
 # my main code project directory
 export PROJECTS=~/code
 
+# the directory where Vundle lives
+export VUNDLE=~/.vim/bundle/Vundle.vim
+
 # add bin for custom global executables to path
 export PATH=$DOTFILES/bin:$PATH
 
@@ -19,4 +22,5 @@ fi
 get_global_env_vars() {
   echo "DOTFILES=$DOTFILES "
   echo "PROJECTS=$PROJECTS "
+  echo "VUNDLE=$VUNDLE "
 }

@@ -2,7 +2,7 @@
 set nocompatible
 
 " source Vundle config file (should be at beginning of vimrc)
-if isdirectory(expand("~/.vim/bundle/Vundle.vim"))
+if isdirectory(expand("$VUNDLE"))
   source $DOTFILES/vim/vundle.vim
 endif
 
