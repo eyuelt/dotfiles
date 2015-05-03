@@ -1,17 +1,19 @@
+#!/bin/bash
+
 # the directory where my dotfiles live
 export DOTFILES=~/.dotfiles
 
 # my main code project directory
 export PROJECTS=~/code
 
+# add bin for custom global executables to path
 export PATH=$DOTFILES/bin:$PATH
 
-PYTHONPATH=$PYTHONPATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages
+# add homebrew packages to python import path
 if [[ -a $(which brew) ]]
 then
-  PYTHONPATH=$PYTHONPATH:$(brew --prefix)/lib/python2.7/site-packages
+  export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$PYTHONPATH
 fi
-export PYTHONPATH
 
 # these vars should be included when using sudo
 get_global_env_vars() {
