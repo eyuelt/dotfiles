@@ -4,15 +4,19 @@
 " Vundle-installed plugins. So this file should be sourced
 " in the vimrc before attempting to use any of those plugins.
 
-" [required]
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
 " Start plugin list -----------------------------
 
 
-Plugin 'gmarik/vundle'                        " Vundle [required]
+Plugin 'gmarik/Vundle.vim'                    " Vundle [required]
 Plugin 'altercation/vim-colors-solarized'     " solarized colorsheme
 Plugin 'jelera/vim-javascript-syntax'         " javascript syntax highlighting
 Plugin 'pangloss/vim-javascript'              " javascript indentation
@@ -26,6 +30,7 @@ Plugin 'derekwyatt/vim-scala'                 " scala syntax highlighting
 
 " End plugin list -------------------------------
 
+call vundle#end()             " [required]
 filetype plugin indent on     " [required]
 
 

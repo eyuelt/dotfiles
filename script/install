@@ -91,14 +91,14 @@ install_git() {
 }
 
 install_vundle() {
-  if [[ ! -a ~/.vim/bundle/vundle ]]
+  if [[ ! -a ~/.vim/bundle/Vundle.vim ]]
   then
     prompt_user_to_install "Vundle"
     if [[ $? == 0 ]]
     then
       info "Installing Vundle..."
       sudo su $USER -c "mkdir -p ~/.vim/bundle"
-      git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle 1>/dev/null 2>/dev/null
+      git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim 1>/dev/null 2>/dev/null
       success "Vundle installed"
       install_vundle_plugins
     fi
