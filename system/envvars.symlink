@@ -17,10 +17,3 @@ if [[ -a $(which brew) ]]
 then
   export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$PYTHONPATH
 fi
-
-# these vars should be included when using sudo
-get_global_env_vars() {
-  echo "DOTFILES=$DOTFILES "
-  echo "PROJECTS=$PROJECTS "
-  echo "VUNDLE=$VUNDLE "
-}

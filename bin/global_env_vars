@@ -1,0 +1,14 @@
+#!/bin/zsh
+# This script outputs, in env format, the variables that
+# should be included when using sudo
+
+# the names of the vars
+VARS=()
+VARS+='DOTFILES'
+VARS+='PROJECTS'
+VARS+='VUNDLE'
+
+for i in $VARS
+do
+  eval echo "$i=\${$i} "
+done
