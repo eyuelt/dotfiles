@@ -19,7 +19,6 @@ main() {
 
   if [ "$(uname -s)" == "Darwin" ]
   then
-    #this needs to be done last
     setup_solarized_for_mac
   fi
 
@@ -198,26 +197,7 @@ setup_solarized_for_mac() {
   fi
 
   info "Setting up Terminal theme"
-  user "This will quit Terminal and restart it in 30 seconds. Is this okay? [y/n]"
-  read -n 1 first
-
-  while [ $first != "y" ] && [ $first != "Y" ] && [ $first != "n" ] && [ $first != "N" ]
-  do
-    user "Please answer [y]es or [n]o:"
-    read -n 1 first
-  done
-
-  if [ $first == "y" ] || [ $first == "Y" ]
-  then
-    info "Alrighty then."
-    open "$DOTFILES/osx/Solarized Dark.terminal" &
-    osascript $DOTFILES/osx/set_default_terminal_theme.scpt &
-    disown %%
-    exit 0
-  else
-    error "Did not set default Terminal theme."
-    echo ''
-  fi
+  $DOTFILES/osx/set_default_terminal_theme.sh
 }
 
 
