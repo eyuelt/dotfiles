@@ -24,6 +24,8 @@ main() {
 
   sudo -k
   echo '  Setup complete!'
+
+  exec zsh
 }
 
 
