@@ -97,7 +97,7 @@ sudo defaults write /Library/Preferences/.GlobalPreferences.plist _HIEnableTheme
 defaults write com.apple.dt.Xcode DVTTextShowLineNumbers -bool true
 
 # Xcode: enable developer mode
-sudo DevToolsSecurity -enable
+sudo DevToolsSecurity -enable 1>/dev/null
 
 # TextEdit: use plain text mode for new documents
 defaults write com.apple.TextEdit RichText -int 0
