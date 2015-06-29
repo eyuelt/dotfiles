@@ -18,9 +18,6 @@ setopt NO_HUP                # don't send HUP signal to running jobs when the sh
 setopt NO_LIST_BEEP          # don't beep when ambiguous completions
 setopt LOCAL_OPTIONS         # allow functions to have local options
 setopt LOCAL_TRAPS           # allow functions to have local traps
-#setopt HIST_VERIFY
-setopt SHARE_HISTORY         # share history between sessions ???
-setopt EXTENDED_HISTORY      # add timestamps to history
 setopt PROMPT_SUBST          # parameter expansion, command substitution, arithmetic expansion
 setopt CORRECT               # spell correction
 setopt COMPLETE_IN_WORD      # autocomplete from cursor even if cursor is in middle of word
@@ -28,6 +25,7 @@ setopt IGNORE_EOF            # don't exit on EOF (use exit or logout commands to
 
 setopt APPEND_HISTORY        # adds history
 setopt INC_APPEND_HISTORY    # adds history incrementally
+setopt EXTENDED_HISTORY      # add timestamps to history
 setopt SHARE_HISTORY         # share history across sessions
 setopt HIST_IGNORE_ALL_DUPS  # don't record duplicates in history
 setopt HIST_REDUCE_BLANKS    # remove extra blanks
