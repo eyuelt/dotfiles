@@ -2,10 +2,12 @@
 # Mostly taken from https://github.com/mathiasbynens/dotfiles/blob/master/.osx
 
 
-
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
+
+# Disable the "Are you sure you want to open this application?" dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Disable smart quotes as they're annoying when typing code
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
@@ -17,7 +19,11 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 
+# Menu bar: show battery percentage
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
+# Mission Control: don't automatically rearrange spaces
+defaults write com.apple.dock mru-spaces -bool false
 
 
 ###############################################################################
@@ -29,26 +35,21 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# Disable "natural" (Lion-style) scrolling
-#defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
-
-# Disable press-and-hold for keys in favor of key repeat
+# Keyboard: disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
-# Set a blazingly fast keyboard repeat rate
+# Keyboard: stop iTunes from responding to the keyboard media keys
+launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
+
+# Keyboard: set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 0
-
-# Stop iTunes from responding to the keyboard media keys
-#launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
-
-
 
 
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
 
-# Show icons for hard drives, servers, and removable media on the desktop
+# Finder: show icons for hard drives, servers, and removable media on the desktop
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
@@ -66,14 +67,33 @@ defaults write com.apple.finder ShowStatusBar -bool true
 # Finder: show path bar
 defaults write com.apple.finder ShowPathbar -bool true
 
+# Finder: display full POSIX path as Finder window title
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
 # Finder: allow text selection in Quick Look
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
-# Display full POSIX path as Finder window title
-defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
-
-# Disable the warning when changing a file extension
+# Finder: disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-# Show the ~/Library folder
+# Finder: show the ~/Library folder
 chflags nohidden ~/Library
+
+
+###############################################################################
+# Other Apps                                                                  #
+###############################################################################
+
+# Xcode: show line numbers
+defaults write com.apple.dt.Xcode DVTTextShowLineNumbers -bool true
+
+# Xcode: enable developer mode
+sudo DevToolsSecurity -enable
+
+# TextEdit: use plain text mode for new documents
+defaults write com.apple.TextEdit RichText -int 0
+
+
+###############################################################################
+# UNTESTED                                                                    #
+###############################################################################

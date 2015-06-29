@@ -20,6 +20,7 @@ main() {
 
   if [ "$(uname -s)" == "Darwin" ]
   then
+    $DOTFILES/osx/osx.script
     setup_solarized_for_mac
   fi
 
