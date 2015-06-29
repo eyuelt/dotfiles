@@ -4,6 +4,19 @@ export DOTFILES=$HOME/.dotfiles
 export VUNDLE=~/.vim/bundle/Vundle.vim
 
 
+# if root, try to demote
+if [ $UID -eq 0 ]
+then
+    UNPRIVILEGED_USER=`who am i | awk '{print $1}'`
+    if [ $UNPRIVILEGED_USER != 'root' ]
+    then
+        exec su $UNPRIVILEGED_USER -c "bash $0 $*"
+    fi
+    echo "Don't run as root!"
+    exit 1
+fi
+
+
 main() {
   set -e
 
