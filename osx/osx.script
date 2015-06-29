@@ -15,6 +15,9 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 # Disable smart dashes as they're annoying when typing code
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
+# Display ASCII control characters using caret notation in standard text views
+defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
+
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
@@ -81,6 +84,9 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Finder: show the ~/Library folder
 chflags nohidden ~/Library
+
+# Finder: enable hotkey (Cmd+Alt+Ctrl+T) for toggling dark mode
+sudo defaults write /Library/Preferences/.GlobalPreferences.plist _HIEnableThemeSwitchHotKey -bool true
 
 
 ###############################################################################
