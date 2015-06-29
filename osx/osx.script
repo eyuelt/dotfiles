@@ -22,6 +22,9 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # Menu bar: show battery percentage
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
+# Menu bar: show day, date, and time
+defaults write com.apple.menuextra.clock 'DateFormat' -string 'EEE MMM d  h:mm a'
+
 # Mission Control: don't automatically rearrange spaces
 defaults write com.apple.dock mru-spaces -bool false
 
