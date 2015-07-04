@@ -2,7 +2,10 @@
 
 
 main() {
-  sudo -v
+  if [ -z $nosudo ]
+  then
+    sudo -v
+  fi
 
   should_prompt_user=false
 
@@ -12,8 +15,11 @@ main() {
     install_vundle
   elif [ "$(uname -s)" == "Linux" ]
   then
-    install_zsh
-    install_git
+    if [ -z $nosudo ]
+    then
+      install_zsh
+      install_git
+    fi
     install_vundle
   fi
   echo ''
@@ -138,4 +144,16 @@ prompt_user_to_install() {
   return 0
 }
 
+set_args() {
+  while [ "$1" != "" ]; do
+    case $1 in
+      "-n" | "--nosudo")
+        nosudo=true
+        ;;
+    esac
+    shift
+  done
+}
+
+set_args $*
 main
