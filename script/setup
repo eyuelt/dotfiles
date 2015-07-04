@@ -23,11 +23,10 @@ main() {
   if [ -z $nosudo ]
   then
     sudo -v -p "Enter sudo password (or run with --nosudo):"
-
-    $DOTFILES/script/install
     set_default_shell
   fi
 
+  run_install_script
   setup_gitconfig
   install_dotfiles
 
@@ -64,6 +63,12 @@ fail() {
   printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
   echo ''
   exit
+}
+
+run_install_script() {
+  arg=""
+  if [ "$nosudo" = true ]; then arg="--nosudo"; fi
+  $DOTFILES/script/install $arg
 }
 
 set_default_shell() {
