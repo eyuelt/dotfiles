@@ -156,6 +156,8 @@
 	VHJvb3SAAQgRGiMtMjc7QUhOW2KGiIqPmqOrrrfJzNEAAAAAAAABAQAAAAAAAAAZAAAA
 	AAAAAAAAAAAAAAAA0w==
 	</data>
+	<key>Bell</key>
+	<false/>
 	<key>BlinkText</key>
 	<false/>
 	<key>CommandString</key>
@@ -187,7 +189,7 @@
 	<key>Linewrap</key>
 	<true/>
 	<key>ProfileCurrentVersion</key>
-	<real>2.02</real>
+	<real>2.03</real>
 	<key>RunCommandAsShell</key>
 	<true/>
 	<key>SelectionColor</key>
@@ -229,6 +231,8 @@
 	<false/>
 	<key>UseBrightBold</key>
 	<true/>
+	<key>VisualBellOnlyWhenMuted</key>
+	<false/>
 	<key>blackColour</key>
 	<data>
 	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
