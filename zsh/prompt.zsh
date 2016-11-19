@@ -54,8 +54,18 @@ git_repo_info() {
   fi
 }
 
+# display a symbol if x-forwarding is enabled
+x_symbol() {
+    if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]
+    then
+        if [ -n "$DISPLAY" ]
+        then
+            echo -n "$C6⦿$CRESET"
+        fi
+    fi
+}
 
-export PROMPTLINE1='┌─ $(username)$(computer_name)$(directory)$(git_repo_info)'
+export PROMPTLINE1='┌─$(x_symbol) $(username)$(computer_name)$(directory)$(git_repo_info)'
 export PROMPTLINE2='└> '
 
 precmd() {
