@@ -7,13 +7,13 @@ export VUNDLE=~/.vim/bundle/Vundle.vim
 # if root, try to demote
 if [ $UID -eq 0 ]
 then
-    unprivileged_user=`who am i | awk '{print $1}'`
-    if [ $unprivileged_user != 'root' ]
-    then
-        exec su $unprivileged_user -c "bash $0 $*"
-    fi
-    echo "Don't run as root!"
-    exit 1
+  unprivileged_user=`who am i | awk '{print $1}'`
+  if [ $unprivileged_user != 'root' ]
+  then
+    exec su $unprivileged_user -c "bash $0 $*"
+  fi
+  echo "Don't run as root!"
+  exit 1
 fi
 
 
@@ -23,16 +23,23 @@ main() {
   if [ -z $nosudo ]
   then
     sudo -v -p "Enter sudo password (or run with --nosudo):"
-    set_default_shell
   fi
 
   run_install_script
   setup_gitconfig
   install_dotfiles
 
+  if [[ -z $nosudo && -f `which zsh`  ]]
+  then
+    set_default_shell
+  fi
+
   if [ "$(uname -s)" == "Darwin" ]
   then
-    $DOTFILES/osx/osx.script
+    if [ -z $nosudo ]
+    then
+      $DOTFILES/osx/osx.script
+    fi
     setup_solarized_for_mac
   fi
 
@@ -74,29 +81,7 @@ run_install_script() {
 set_default_shell() {
   info "Setting zsh as default shell..."
 
-  if [ ! -f `which zsh` ]
-  then
-    user "You don't have zsh. Download and install zsh? [y/n]"
-    read -n 1 first
-
-    while [ $first != "y" ] && [ $first != "Y" ] && [ $first != "n" ] && [ $first != "N" ]
-    do
-      user "Please answer [y]es or [n]o:"
-      read -n 1 first
-    done
-
-    if [ $first == "y" ] || [ $first == "Y" ]
-    then
-      info "Installing zsh..."
-      if [ "$(uname -s)" == "Linux" ]
-      then
-        sudo apt-get install zsh --yes 1>/dev/null 2>/dev/null
-      fi
-      success "zsh installed"
-    fi
-  fi
-
-  if [ -f `which zsh` ]
+  if [[ -f `which zsh` ]]
   then
     sudo chsh -s /bin/zsh `whoami` 1>/dev/null 2>/dev/null
     success "Set zsh as default shell"
