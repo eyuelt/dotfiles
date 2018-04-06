@@ -15,13 +15,6 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 # Disable smart dashes as they're annoying when typing code
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
-# Display ASCII control characters using caret notation in standard text views
-defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
-
-# Always show scrollbars
-defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
-# Possible values: `WhenScrolling`, `Automatic` and `Always`
-
 # Menu bar: show battery percentage
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
@@ -38,6 +31,7 @@ defaults write com.apple.dock mru-spaces -bool false
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
@@ -48,7 +42,8 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
 # Keyboard: set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 0
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 
 ###############################################################################
@@ -106,3 +101,12 @@ defaults write com.apple.TextEdit RichText -int 0
 ###############################################################################
 # UNTESTED                                                                    #
 ###############################################################################
+
+# Disable automatic capitalization as it’s annoying when typing code
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+# Pin the dock to the left side of the screen
+defaults write com.apple.dock orientation left
+
+# Make the dock really small
+defaults write com.apple.dock tilesize -int 24
