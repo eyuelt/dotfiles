@@ -5,7 +5,7 @@
 # the names of the vars
 VARS=()
 VARS+='DOTFILES'
-VARS+='PROJECTS'
+VARS+='CODE'
 VARS+='VUNDLE'
 
 for i in $VARS

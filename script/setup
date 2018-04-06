@@ -74,7 +74,7 @@ run_install_script() {
 set_default_shell() {
   info "Setting zsh as default shell..."
 
-  if [ ! -f /bin/zsh ]
+  if [ ! -f `which zsh` ]
   then
     user "You don't have zsh. Download and install zsh? [y/n]"
     read -n 1 first
@@ -96,7 +96,7 @@ set_default_shell() {
     fi
   fi
 
-  if [ -f /bin/zsh ]
+  if [ -f `which zsh` ]
   then
     sudo chsh -s /bin/zsh `whoami` 1>/dev/null 2>/dev/null
     success "Set zsh as default shell"

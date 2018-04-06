@@ -2,3 +2,10 @@
 *~
 *.sw[po]
 \#*\#
+
+# IntelliJ files
+.idea
+*.iml
+
+# not really sure what this is
+.d8_history

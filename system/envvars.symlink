@@ -4,13 +4,13 @@
 export DOTFILES=~/.dotfiles
 
 # my main code project directory
-export PROJECTS=~/code
+export CODE=~/code
 
 # the directory where Vundle lives
 export VUNDLE=~/.vim/bundle/Vundle.vim
 
 # add bin for custom global executables to path
-export PATH=$DOTFILES/bin:$PATH
+export PATH=~/bin:$DOTFILES/bin:$PATH
 
 # add homebrew packages to python import path
 if [[ -a $(which brew) ]]
