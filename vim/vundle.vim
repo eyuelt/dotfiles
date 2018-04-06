@@ -26,6 +26,7 @@ Plugin 'walm/jshint.vim'                      " run JSHint within vim
 Plugin 'eyuelt/vim-better-whitespace'         " clean whitespace
 Plugin 'elzr/vim-json'                        " json syntax highlighting
 Plugin 'derekwyatt/vim-scala'                 " scala syntax highlighting
+Plugin 'leafgarland/typescript-vim'           " typescript syntax highlighting
 
 
 " End plugin list -------------------------------
