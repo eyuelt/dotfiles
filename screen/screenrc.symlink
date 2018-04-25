@@ -1,0 +1,2 @@
+# scrollback buffer size
+defscrollback 100000
