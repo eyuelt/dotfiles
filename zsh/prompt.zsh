@@ -19,6 +19,13 @@ computer_name() {
   fi
 }
 
+screen_info() {
+  if [[ -n $STY ]]
+  then
+    echo -n "[$C6$STY$CRESET]"
+  fi
+}
+
 directory() {
   echo -n " in "
   echo -n "$C5%U%~%u$CRESET"
@@ -65,7 +72,7 @@ x_symbol() {
     fi
 }
 
-export PROMPTLINE1='┌─$(x_symbol) $(username)$(computer_name)$(directory)$(git_repo_info)'
+export PROMPTLINE1='┌─$(x_symbol) $(username)$(computer_name)$(screen_info)$(directory)$(git_repo_info)'
 export PROMPTLINE2='└> '
 
 precmd() {
