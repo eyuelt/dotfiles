@@ -1,14 +1,6 @@
 # load all of the environment variables
 source ~/.envvars
 
-# use .localrc for secret stuff or stuff that's specific to an
-# individual machine. just anything that you don't want in your
-# public repo.
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
-
 # get all zsh files in our dotfiles directory
 typeset -U config_files
 config_files=($DOTFILES/**/*.zsh)
@@ -24,6 +16,15 @@ for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
   source $file
 done
+
+# use .localrc for secret stuff or stuff that's specific to an
+# individual machine. just anything that you don't want in your
+# public repo. this should be sourced after the other configs
+# since it may need to overwrite some things defined there.
+if [[ -a ~/.localrc ]]
+then
+  source ~/.localrc
+fi
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
