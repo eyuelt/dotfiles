@@ -1,7 +1,13 @@
 " make sure Vi-compatibility mode is off so we can use Vim features
 set nocompatible
 
-" source Vundle config file (should be at beginning of vimrc)
+" enable file type based indent configuration
+filetype plugin indent on
+
+" enable syntax highlighting
+syntax on
+
+" source Vundle config file (this line should be at beginning of vimrc)
 if isdirectory(expand("$VUNDLE"))
   source $DOTFILES/vim/vundle.vim
 endif
@@ -55,3 +61,21 @@ set cursorline
 
 " show line and column number in bottom right of screen
 set ruler
+
+" show vertical line at column 80
+set colorcolumn=80
+highlight ColorColumn term=bold cterm=NONE ctermfg=NONE ctermbg=DarkGrey gui=NONE guifg=NONE guibg=DarkGrey
+
+" show name of function under cursor on '\f'
+fun! ShowFuncName()
+  let lnum = line(".")
+  let col = col(".")
+  echohl ModeMsg
+  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
+  echohl None
+  call search("\\%" . lnum . "l" . "\\%" . col . "c")
+endfun
+map \f :call ShowFuncName() <CR>
+
+" make netrw list files and directories as a tree
+let g:netrw_liststyle=3
