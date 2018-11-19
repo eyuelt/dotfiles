@@ -28,6 +28,12 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" enable highlighting search results
+set hlsearch
+
+" alias '\h' to hide the highlight from the previous search
+noremap \h :nohlsearch<CR>
+
 " put spaces instead of tabs
 set expandtab
 

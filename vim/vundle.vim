@@ -27,6 +27,7 @@ Plugin 'eyuelt/vim-better-whitespace'         " clean whitespace
 Plugin 'elzr/vim-json'                        " json syntax highlighting
 Plugin 'derekwyatt/vim-scala'                 " scala syntax highlighting
 Plugin 'leafgarland/typescript-vim'           " typescript syntax highlighting
+Plugin 'google/vim-searchindex'               " show number of search matches
 
 
 " End plugin list -------------------------------
