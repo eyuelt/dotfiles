@@ -28,6 +28,7 @@ Plugin 'elzr/vim-json'                        " json syntax highlighting
 Plugin 'derekwyatt/vim-scala'                 " scala syntax highlighting
 Plugin 'leafgarland/typescript-vim'           " typescript syntax highlighting
 Plugin 'google/vim-searchindex'               " show number of search matches
+Plugin 'google/vim-jsonnet'                   " jsonnet syntax highlighting
 
 
 " End plugin list -------------------------------

@@ -37,7 +37,7 @@ noremap \h :nohlsearch<CR>
 " put spaces instead of tabs
 set expandtab
 
-function TabWidth(width)
+function! TabWidth(width)
     let &tabstop=a:width
     let &softtabstop=a:width
     let &shiftwidth=a:width
