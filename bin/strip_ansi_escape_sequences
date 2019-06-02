@@ -5,5 +5,5 @@
 # Note: This does not handle all ANSI escape sequences, as some do not fit the
 # format specified above.
 
-esc=""  # written elsewhere as \e or \033  # TODO: This is not copy-paste friendly. Esc char must be typed with Ctrl-V then ESC
+esc="\x1b"  # hex value of ESC
 echo -n $@ | sed -E "s/${esc}[[0-9]*[a-zA-Z]//g"
