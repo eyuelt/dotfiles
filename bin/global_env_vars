@@ -1,4 +1,5 @@
 #!/bin/zsh
+#
 # This script outputs, in env format, the variables that
 # should be included when using sudo
 
