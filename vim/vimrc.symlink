@@ -85,3 +85,7 @@ map \f :call ShowFuncName() <CR>
 
 " make netrw list files and directories as a tree
 let g:netrw_liststyle=3
+
+" show status bar with filename
+set laststatus=2
+set statusline=%f
