@@ -147,48 +147,12 @@ print_precmd_line() {
   fi
 }
 
-# This maintains an in-memory timing history of the commands run in this shell
-# session.
-export g_timing_history
-timing_history__add_entry() {
-  # only define it if it's not already defined. don't want to reset the history
-  # every time zshrc is sourced.
-  if [[ -z $g_timing_history ]]
-  then
-    g_timing_history=()
-  fi
-  local header="======"
-  local command_text="Command: \`${1}\`"
-  local start_time="Start:   ${2}"
-  g_timing_history+="\n${header}\n${command_text}\n${start_time}\n"
-}
-timing_history__update_previous_entry() {
-  local finish_time="Finish:  ${1}"
-  if [[ -n ${g_timing_history[-1]} ]]
-  then
-    g_timing_history[-1]="${g_timing_history[-1]}${finish_time}"
-  fi
-}
-recent_timing_history() {
-  local num_elems_to_show=10
-  local num_elems_available="${#g_timing_history[@]}"
-  if [[ $num_elems_available -lt $num_elems_to_show ]]
-  then
-    num_elems_to_show=$num_elems_available
-  fi
-  for i in {$num_elems_to_show..1}
-  do
-    echo "$g_timing_history[-$i]"
-  done
-}
+########## Zsh Hook Functions ##########
+# These are added to precmd_functions in init.zsh.
+# See http://zsh.sourceforge.net/Doc/Release/Functions.html#Hook-Functions.
 
-
-########## Functions executed by zsh ##########
-# See http://zsh.sourceforge.net/Doc/Release/Functions.html.
-
-# This function is executed by zsh before each prompt.
-precmd() {
-  timing_history__update_previous_entry "$(date +'%Y/%m/%d - %H:%M:%S')"
+# Executed before each prompt.
+precmd__prompt() {
   # set these vars for use in rprompt
   g_prev_command_exit_code=$?  # Note: this must be the first line in precmd
   g_prompt_creation_time="$(date +'%H:%M:%S')"
@@ -202,14 +166,8 @@ precmd() {
   print -n "\e[2K\n${g_saved_precmd_line}\n"
 }
 
-# This function is executed by zsh after the user enters a command.
-preexec() {
-  timing_history__add_entry "$1" "$(date +'%Y/%m/%d - %H:%M:%S')"
-}
-
-# This function is executed by zsh after the user enters a command but before it
-# is executed.
-zshaddhistory() {
+# Executed after the user enters a command but before it is executed.
+zshaddhistory__prompt() {
   local command_height="$(line_height -i -w=$g_saved_window_width "${PROMPT}${1}")"
   local precmd_line_height="$(line_height -w=$COLUMNS "$(strip_ansi_escape_sequences ${(%%e)g_saved_precmd_line})")"
   local num_lines_to_move_up="$(($command_height + $precmd_line_height))"
