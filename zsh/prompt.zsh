@@ -103,7 +103,7 @@ prompt_x_symbol() {
 
 # show the current time so we know when a command was run
 prompt_time() {
-  local left_clock_color="$C2"
+  local left_clock_color="$C3"
   if [[ $g_prev_command_exit_code -ne 0 ]]
   then
     left_clock_color="$C1"
