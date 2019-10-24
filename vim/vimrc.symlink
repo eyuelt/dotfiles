@@ -55,6 +55,18 @@ if has("unix")
   colorscheme solarized
 endif
 
+" switch between dark and light background
+fun! ToggleBackgroundColor()
+  if &background == 'dark'
+    let &background = 'light'
+  else
+    let &background = 'dark'
+  endif
+  " TODO: for some reason we have to do the lineno highlight all over again
+  highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+endfun
+command! ToggleBackgroundColor call ToggleBackgroundColor()
+
 " show line numbers and make them grey
 set number
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
