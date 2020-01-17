@@ -3,7 +3,7 @@ alias rm='rm -i'
 alias mv='mv -i'
 #alias cp='cp -i'
 alias emacs='emacs -nw'
-alias diff='diff -bB'
+alias diff='diff -bB --color'
 
 if [ "$(uname -s)" = "Darwin" ]
 then
