@@ -12,10 +12,6 @@ if isdirectory(expand("$VUNDLE"))
   source $DOTFILES/vim/vundle.vim
 endif
 
-" alias 'fj' to ESC in all modes
-noremap fj <ESC>
-noremap! fj <ESC>
-
 " alias '\l' to toggle line numbers
 noremap \l :set number!<CR>
 
