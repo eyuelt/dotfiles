@@ -1,0 +1,9 @@
+#!/bin/zsh
+#
+# Removes all ANSI escape sequences of the format "ESC[\d*\w". This is mainly
+# useful for stripping out the color codes from strings.
+# Note: This does not handle all ANSI escape sequences, as some do not fit the
+# format specified above.
+
+esc="\x1b"  # hex value of ESC
+echo -n $@ | sed -E "s/${esc}[[0-9]*[a-zA-Z]//g"

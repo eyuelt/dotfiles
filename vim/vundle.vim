@@ -17,7 +17,7 @@ call vundle#begin()
 
 
 Plugin 'gmarik/Vundle.vim'                    " Vundle [required]
-Plugin 'eyuelt/vim-colors-solarized'          " solarized colorsheme
+Plugin 'altercation/vim-colors-solarized'     " solarized colorsheme
 Plugin 'jelera/vim-javascript-syntax'         " javascript syntax highlighting
 Plugin 'pangloss/vim-javascript'              " javascript indentation
 Plugin 'digitaltoad/vim-jade'                 " jade syntax highlighting
@@ -28,6 +28,7 @@ Plugin 'elzr/vim-json'                        " json syntax highlighting
 Plugin 'derekwyatt/vim-scala'                 " scala syntax highlighting
 Plugin 'leafgarland/typescript-vim'           " typescript syntax highlighting
 Plugin 'google/vim-searchindex'               " show number of search matches
+Plugin 'google/vim-jsonnet'                   " jsonnet syntax highlighting
 
 
 " End plugin list -------------------------------

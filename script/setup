@@ -1,7 +1,8 @@
 #!/bin/bash
 
-export DOTFILES=$HOME/.dotfiles
-export VUNDLE=~/.vim/bundle/Vundle.vim
+# Define these locally because the global envvars are not yet loaded.
+DOTFILES=$HOME/.dotfiles
+VUNDLE=~/.vim/bundle/Vundle.vim
 
 
 # if root, try to demote

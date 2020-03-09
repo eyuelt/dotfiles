@@ -10,8 +10,8 @@ fi
 #autoload -U $DOTFILES/functions/*(:t)
 
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=20000
+SAVEHIST=20000
 
 setopt NO_BG_NICE            # don't nice background tasks
 setopt NO_HUP                # don't send HUP signal to running jobs when the shell exits

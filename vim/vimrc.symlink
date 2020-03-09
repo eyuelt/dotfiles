@@ -37,7 +37,7 @@ noremap \h :nohlsearch<CR>
 " put spaces instead of tabs
 set expandtab
 
-function TabWidth(width)
+function! TabWidth(width)
     let &tabstop=a:width
     let &softtabstop=a:width
     let &shiftwidth=a:width
@@ -48,15 +48,24 @@ command! -nargs=1 TabWidth call TabWidth(<f-args>)
 let defaultwidth=2
 call TabWidth(defaultwidth)
 
-" use solarized theme on mac
+" use solarized theme on mac and linux
 if has("unix")
-  let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-    syntax enable
-    set background=dark
-    colorscheme solarized
-  endif
+  syntax enable
+  set background=dark
+  colorscheme solarized
 endif
+
+" switch between dark and light background
+fun! ToggleBackgroundColor()
+  if &background == 'dark'
+    let &background = 'light'
+  else
+    let &background = 'dark'
+  endif
+  " TODO: for some reason we have to do the lineno highlight all over again
+  highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+endfun
+command! ToggleBackgroundColor call ToggleBackgroundColor()
 
 " show line numbers and make them grey
 set number
@@ -89,3 +98,6 @@ let g:netrw_liststyle=3
 " show status bar with filename
 set laststatus=2
 set statusline=%f
+
+" keep the cursor offset from the top/bottom of the screen when scrolling
+set scrolloff=2

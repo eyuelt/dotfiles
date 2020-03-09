@@ -1,0 +1,50 @@
+#!/usr/bin/python
+
+import math
+import argparse
+
+# decodes the unicode in the given string and returns the length of the
+# resulting string. this is in a separate function in order to make it clear
+# that we only need to decode the string when we're getting its length.
+def len_decoded_str(text):
+  return len(text.decode('utf-8'))
+
+# returns the wrapped height of the given line in number of lines. the input
+# line must be a single line (contains no newline characters).
+def wrapped_line_height_single_line(line, max_line_width):
+  if max_line_width is None:
+    return 1
+  return int(math.ceil(float(len_decoded_str(line))/max_line_width))
+
+# returns the height of the given input_str in number of lines. if
+# max_line_width is provided, any line longer than max_line_width will be
+# wrapped (independently) to max_line_width.
+def wrapped_line_height(input_str, max_line_width, include_newlines):
+  suffix = '\n' if include_newlines else ''
+  lines = [line + suffix for line in input_str.split('\n')]
+  if lines[-1] == suffix:
+    lines = lines[:-1]
+  return sum([wrapped_line_height_single_line(line, max_line_width)
+              for line in lines])
+
+# set up the command line args
+def init_arg_parser():
+  parser = argparse.ArgumentParser(
+      description='Gets the height of the given input string in lines.')
+  parser.add_argument(
+      '--include-newlines', '-i', action='store_true', default=False,
+      help='whether or not to keep the newlines contained in the input string')
+  parser.add_argument(
+      '--max-line-width', '-w', type=int, default=None,
+      help='maximum width allowed for a line. any line in the input longer '
+      'than max_line_width will be wrapped (independently) to max_line_width')
+  parser.add_argument('input_string', type=str, help='the string to measure')
+  return parser
+
+def main():
+  args = init_arg_parser().parse_args()
+  print wrapped_line_height(args.input_string, args.max_line_width,
+                            args.include_newlines)
+
+if __name__ == "__main__":
+  main()

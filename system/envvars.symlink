@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# helper vars for avoiding the issue where self-referencing vars get longer
+# whenever this file is sourced again. for parameter expansion syntax, see:
+# http://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02
+if [[ -z "${_ORIGINAL_PATH+x}" ]]; then export _ORIGINAL_PATH=$PATH; fi
+if [[ -z "${_ORIGINAL_PYTHONPATH+x}" ]]; then export _ORIGINAL_PYTHONPATH=$PYTHONPATH; fi
+
 # the directory where my dotfiles live
 export DOTFILES=~/.dotfiles
 
@@ -10,10 +16,10 @@ export CODE=~/code
 export VUNDLE=~/.vim/bundle/Vundle.vim
 
 # add bin for custom global executables to path
-export PATH=~/bin:$DOTFILES/bin:$PATH
+export PATH=~/bin:$DOTFILES/bin:$_ORIGINAL_PATH
 
 # add homebrew packages to python import path
 if [[ -a $(which brew) ]]
 then
-  export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$PYTHONPATH
+  export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$_ORIGINAL_PYTHONPATH
 fi
