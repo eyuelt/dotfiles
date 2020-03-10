@@ -12,10 +12,6 @@ if isdirectory(expand("$VUNDLE"))
   source $DOTFILES/vim/vundle.vim
 endif
 
-" alias 'fj' to ESC in all modes
-noremap fj <ESC>
-noremap! fj <ESC>
-
 " alias '\l' to toggle line numbers
 noremap \l :set number!<CR>
 
@@ -94,6 +90,10 @@ map \f :call ShowFuncName() <CR>
 
 " make netrw list files and directories as a tree
 let g:netrw_liststyle=3
+
+" show status bar with filename
+set laststatus=2
+set statusline=%f
 
 " keep the cursor offset from the top/bottom of the screen when scrolling
 set scrolloff=2

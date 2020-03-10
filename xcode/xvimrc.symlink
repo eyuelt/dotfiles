@@ -1,6 +1,2 @@
-" alias 'fj' to ESC in normal and insert modes
-noremap fj <ESC>
-inoremap fj <ESC>
-
 " hide vertical and horizontal scrollbars
 set guioptions=
