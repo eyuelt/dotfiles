@@ -16,3 +16,5 @@
   st = status -s
 [push]
   default = simple
+[pull]
+  ff = only
