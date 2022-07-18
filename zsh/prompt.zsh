@@ -9,15 +9,15 @@
 
 # constants
 # TODO: move these somewhere else
-C0="\033[30m"  # black
-C1="\033[31m"  # red
-C2="\033[32m"  # green
-C3="\033[33m"  # yellow
-C4="\033[34m"  # blue
-C5="\033[35m"  # magenta
-C6="\033[36m"  # cyan
-C7="\033[37m"  # white
-CRESET="\033[m"
+C0="%{\033[30m%}"  # black
+C1="%{\033[31m%}"  # red
+C2="%{\033[32m%}"  # green
+C3="%{\033[33m%}"  # yellow
+C4="%{\033[34m%}"  # blue
+C5="%{\033[35m%}"  # magenta
+C6="%{\033[36m%}"  # cyan
+C7="%{\033[37m%}"  # white
+CRESET="%{\033[m%}"
 
 # global variables
 g_prev_command_exit_code=0
