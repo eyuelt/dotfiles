@@ -38,3 +38,9 @@ setopt complete_aliases
 setopt AUTO_PUSHD            # use pushd instead of cd
 setopt RM_STAR_WAIT          # confirm and wait 10 seconds if using 'rm *'
 setopt EXTENDED_GLOB         # activate extended globbing patterns
+
+# This fixes a bug where, when I'm SSHing into a mac, the prompt gets messed up,
+# likely due to the use of unicode characters. See this SO answer:
+# https://stackoverflow.com/questions/11916064/zsh-tab-completion-duplicating-command-name#answer-22779469
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
