@@ -56,22 +56,28 @@ prompt_git_repo_info() {
     echo -n "$C2$(git symbolic-ref --short HEAD 2>/dev/null || (git symbolic-ref HEAD 2>/dev/null | cut -d / -f3 && [[ ${pipestatus[1]} -eq 0 ]]) || echo -n '(detached HEAD)')$CRESET"
 
     echo -n "$C5"
-    local changes=$(git status --short)
-    if [[ -z $changes ]]
+    if [[ -v DISABLE_GIT_STATUS_IN_PROMPT ]]
     then
-      echo -n "."
+      # sometimes in large repos git status takes a long time so we want to disable it
+      echo -n "✗"
     else
-      if [[ -n "$(git status -s | grep '^[^? ]')"  ]]  # there are staged changes
+      local changes=$(git status --short)
+      if [[ -z $changes ]]
       then
-        echo -n "⇡"
-      fi
-      if [[ -n "$(git status -s | grep '^.[^? ]')" ]]  # there are unstaged changes
-      then
-        echo -n "⇣"
-      fi
-      if [[ -n "$(git status -s | grep '^??')" ]]      # there are untracked files
-      then
-        echo -n "?"
+        echo -n "."
+      else
+        if [[ -n "$(git status -s | grep '^[^? ]')"  ]]  # there are staged changes
+        then
+          echo -n "⇡"
+        fi
+        if [[ -n "$(git status -s | grep '^.[^? ]')" ]]  # there are unstaged changes
+        then
+          echo -n "⇣"
+        fi
+        if [[ -n "$(git status -s | grep '^??')" ]]      # there are untracked files
+        then
+          echo -n "?"
+        fi
       fi
     fi
     echo -n "$CRESET"
