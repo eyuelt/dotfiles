@@ -23,7 +23,7 @@ main() {
 
   if [ -z $nosudo ]
   then
-    sudo -v -p "Enter sudo password (or run with --nosudo):"
+    sudo -v -p "Enter sudo password (or run with --nosudo): "
   fi
 
   run_install_script

@@ -24,6 +24,12 @@ defaults write com.apple.menuextra.clock 'DateFormat' -string 'EEE MMM d  h:mm a
 # Mission Control: don't automatically rearrange spaces
 defaults write com.apple.dock mru-spaces -bool false
 
+# Set the directory where screenshots are saved
+defaults write com.apple.screencapture location ~/Documents/Screenshots
+
+# Disable adding a period on double-space.
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
