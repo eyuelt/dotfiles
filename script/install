@@ -53,7 +53,7 @@ install_homebrew() {
       info "Installing homebrew..."
       if [ "$(uname -s)" == "Darwin" ]
       then
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         success "homebrew installed"
       else
         error "homebrew not installed"

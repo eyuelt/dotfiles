@@ -16,7 +16,7 @@ export CODE=~/code
 export VUNDLE=~/.vim/bundle/Vundle.vim
 
 # add bin for custom global executables to path
-export PATH=~/bin:$DOTFILES/bin:$_ORIGINAL_PATH
+export PATH=~/bin:$DOTFILES/bin:/opt/homebrew/bin:$_ORIGINAL_PATH
 
 # add homebrew packages to python import path
 if [[ -a $(which brew) ]]
