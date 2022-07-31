@@ -115,4 +115,4 @@ defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 defaults write com.apple.dock orientation left
 
 # Make the dock really small
-defaults write com.apple.dock tilesize -int 24
+defaults write com.apple.dock tilesize -int 34
