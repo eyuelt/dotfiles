@@ -106,7 +106,7 @@ install_vundle() {
     then
       info "Installing Vundle..."
       git clone https://github.com/gmarik/Vundle.vim.git $VUNDLE 1>/dev/null 2>/dev/null
-      success "Vundle installed to $VUNDLE"
+      success "Vundle installed to \"$VUNDLE\""
     fi
   fi
 }
