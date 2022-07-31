@@ -23,13 +23,6 @@ defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 # Menu bar: show day, date, and time
 defaults write com.apple.menuextra.clock 'DateFormat' -string 'EEE MMM d  h:mm a'
 
-# Menu bar: show volume icon (unless it's already there)
-defaults read com.apple.systemuiserver menuExtras | grep "Volume.menu" 1>/dev/null
-if [[ $? != 0 ]] then
-  defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.Volume.menu" -bool true
-  defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Volume.menu"
-fi
-
 # Mission Control: don't automatically rearrange spaces
 defaults write com.apple.dock mru-spaces -bool false
 
