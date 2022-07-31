@@ -117,3 +117,9 @@ defaults write com.apple.dock orientation left
 
 # Make the dock really small
 defaults write com.apple.dock tilesize -int 34
+
+
+
+killall Dock
+killall SystemUIServer
+killall Finder
