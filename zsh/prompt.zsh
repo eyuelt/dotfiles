@@ -9,6 +9,7 @@
 
 # constants
 # TODO: move these somewhere else
+# TODO: the escape sequences shouldn't be here. it appears that they don't work when in a variable on linux
 C0="%{\033[30m%}"  # black
 C1="%{\033[31m%}"  # red
 C2="%{\033[32m%}"  # green
@@ -95,6 +96,11 @@ prompt_x_symbol() {
   fi
 }
 
+# display the current time
+prompt_time() {
+  echo -n "%{$C5%}%D{%K:%M:%S}%{$CRESET%}"
+}
+
 # This function displays a right-side prompt that is level with the first line
 # of the prompt. This is different from the built-in RPROMPT var, which writes
 # on the last line of the prompt (the same line as the command). This avoids the
@@ -144,10 +150,16 @@ precmd__prompt() {
 
 ########## Prompt definition ##########
 
-prompt_line_1='┌─$(prompt_x_symbol) $(prompt_username)$(prompt_computer_name)$(prompt_screen_info)$(prompt_directory)$(prompt_git_repo_info)'
-prompt_line_2='└> '
+# TODO: the prompt_x_symbol causes the cursor to be out of line with the username
+prompt_line_1='┌[$(prompt_time)]─$(prompt_x_symbol) $(prompt_username)$(prompt_computer_name)$(prompt_screen_info)$(prompt_directory)$(prompt_git_repo_info)'
+prompt_line_2='└($(prompt_time))> '
 
 rprompt=''
 
 # This envvar defines the actual zsh prompt.
 export PROMPT=$prompt_line_2
+
+
+# redraw the prompt every second to update the clock
+TRAPALRM() { zle reset-prompt }
+TMOUT=1
