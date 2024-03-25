@@ -9,8 +9,7 @@ Run this:
 
 ```sh
 git clone https://github.com/eyuelt/dotfiles.git ~/.dotfiles;
-cd ~/.dotfiles;
-script/setup;
+~/.dotfiles/script/setup;
 ```
 
 This will symlink the appropriate files in `.dotfiles` to your home directory.

@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# Define these locally because the global envvars are not yet loaded.
-DOTFILES=$HOME/.dotfiles
-VUNDLE=~/.vim/bundle/Vundle.vim
+# Source this at the beginning to ensure all needed global envvars are loaded.
+source ~/.dotfiles/system/envvars.symlink
 
 
 # if root, try to demote

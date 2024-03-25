@@ -24,6 +24,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" enable relative line numbers
+set relativenumber
+
 " enable highlighting search results
 set hlsearch
 
